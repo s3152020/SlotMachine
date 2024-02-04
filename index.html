@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Start of the CSS Style Sheet-->
+<style>
+body {
+    background: MidnightBlue;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h2 {
+    color: White;
+    text-align: center;
+  }
+  
+  p {
+    color: White;
+    font-size: 50px;
+    text-align:center;
+  }
+  
+  
+  /*Blue background section*/
+  #app {
+    width: 100%;
+    height: 100%;
+    background: MidnightBlue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #slotWindowFrame {
+    background: Grey;
+    display: flex;
+  }
+  
+  /*The three slot machine slot windows*/
+  .slotWindow {
+    background: White;
+    width: 100px;
+    height: 110px;
+    overflow: hidden;
+    /*rounded edges*/
+    border-radius: 5px;
+    /*space between*/
+    margin: 5px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  
+  .boxes {
+    transition: transform 1s ease-in-out;
+  }
+  
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+  }
+  
+  .buttonArea {
+    margin: 1rem 0 1rem 0;
+  }
+  
+  button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 0 0.2rem;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+  }
+  
+  .info {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  #wallet {
+    color: gold;
+    font-size: 20px;
+  }
+
+</style>
+<!--End of the CSS Style Sheet-->
+   
+<body>
+
+  <!--Initializing things here-->
+  <audio id="soundCoinWin">
+    <source src="coin-short.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="soundJackpotWin">
+    <source src="jackpot.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="soundBrassLose">
+    <source src="brass-lose.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+    
+    <h2 id="mainh2"> Three Reel Slot Machine<h2> 
+    <!-- <p2 style='font-size:70px;'>&#10067</p2>  -->
+    
+    
+    <div id="app">
+      <div id="slotWindowFrame">
+        <div class="slotWindow">
+          <div class="boxes">
+            <p class="showIcon">Placeholder for Icon</p1>
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
+    
+        <div class="slotWindow">
+          <div class="boxes">
+            <p class="showIcon">Placeholder for Icon</p1>
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
+    
+        <div class="slotWindow">
+          <div class="boxes">
+            <p class="showIcon">Placeholder for Icon</p1>
+            <!-- <div class="box">?</div> -->
+          </div>
+        </div>
+      </div>
+    
+      <div class="buttonArea">
+        <button id="spinButton" onclick="Spin()">Play</button>
+        <button id="resetButton"onclick="Reset()">Reset</button>
+      </div>
+      
+      <div class="statusBarArea">                                    
+        <p id="demo"></p>
+      </div>              
+    </div>
+
+    <div class="walletArea">                                    
+      <p id="wallet">Your Money:</p>
+    </div>              
+  </div>
+
+<!--Start of the scripting-->
+
+<script>
+
+//start the player with $10
+var playerMoney = 10;  
+
+//go to the app section of the CSS
+const element = document.getElementById("app");
+
+//const displayMoney = document.getElementById("wallet");
+document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+
+//load the question marks
+element.getElementsByClassName("showIcon")[0].textContent ="❓";
+element.getElementsByClassName("showIcon")[1].textContent ="❓";
+element.getElementsByClassName("showIcon")[2].textContent ="❓";
+
+function Spin() {
+
+  playerMoney = playerMoney-1;
+  document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+
+  var soundCoinWin = document.getElementById("soundCoinWin");
+  var soundJackpotWin = document.getElementById("soundJackpotWin");
+
+  document.getElementById("demo").innerHTML = "---";
+
+  var getSymbol = "null";
+  var slots = [];
+
+  for (i=0; i<3; i++) { 
+    randomRoll = Math.floor(Math.random()*3);
+    //console.log(randomRoll);
+    switch (randomRoll) {
+      case 0: getSymbol = "🍒"; break;
+      case 1: getSymbol = "🍋"; break;
+      case 2: getSymbol = "💰"; break;
+    }
+    slots[i] = getSymbol;
+  }
+
+  if (slots[0] == "🍒" && slots[1] == "🍒" && slots[2] == "🍒") {
+    document.getElementById("demo").innerHTML = "Cherry Win!";
+    soundCoinWin.play();
+    playerMoney = playerMoney+3;
+    document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+  }
+
+  if (slots[0] == "🍋" && slots[1] == "🍋" && slots[2] == "🍋") {
+    document.getElementById("demo").innerHTML = "Lemon Win!";
+    soundCoinWin.play();
+    playerMoney = playerMoney+2;
+    document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+  }
+
+  if (slots[0] == "💰" && slots[1] == "💰" && slots[2] == "💰") {
+    document.getElementById("demo").innerHTML = "JACKPOT Win!";
+    soundJackpotWin.play();
+    playerMoney = playerMoney+5;
+    document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+  }
+
+  //for troubleshooting if you want to just load cherry symbols
+  /*
+  element.getElementsByClassName("showIcon")[0].textContent ="🍒";
+  element.getElementsByClassName("showIcon")[1].textContent ="🍒";
+  element.getElementsByClassName("showIcon")[2].textContent ="🍒";
+  */
+
+  //display the icons in the slot windows
+  element.getElementsByClassName("showIcon")[0].textContent =slots[0];
+  element.getElementsByClassName("showIcon")[1].textContent =slots[1];
+  element.getElementsByClassName("showIcon")[2].textContent =slots[2];
+
+  if (playerMoney == 0) {
+    document.getElementById("spinButton").disabled = true;
+    soundBrassLose.play();
+  }
+  
+
+}
+
+function Reset() {
+  var testingText = "Starting Over...";
+  document.getElementById("demo").innerHTML = "You Reset";
+  document.getElementById("demo").innerHTML = testingText;
+  element.getElementsByClassName("showIcon")[0].textContent ="❓";
+  element.getElementsByClassName("showIcon")[1].textContent ="❓";
+  element.getElementsByClassName("showIcon")[2].textContent ="❓";
+  playerMoney = 10;
+}
+</script>
+<!--Start of the scripting-->
+
+
+</body>
+</html>
