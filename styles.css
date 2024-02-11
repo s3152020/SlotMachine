@@ -93,3 +93,28 @@ button {
     padding: .5rem 1rem;
 }
 
+div#infoWindow-container {
+    background-color: grey;
+    display: flex;
+    flex-direction: row;
+    border: 2px dashed black;
+    justify-content: center; /*centers the sub-windows horizontally*/
+}
+
+div#infoWindowOne {
+    height: 200px;
+    width: 1200px;
+    margin: .6rem;
+    padding: 1rem;
+    background: whitesmoke;
+    background-color: black;
+    border: 2px solid black;
+}
+
+div#infoBoxOne {
+    display: flex;
+    justify-content: center;
+    font-size:8rem;
+    color: black;
+}
+

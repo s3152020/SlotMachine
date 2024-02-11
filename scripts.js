@@ -12,9 +12,9 @@ function randomEmoji() {
     randomRoll = Math.floor(Math.random()*3);
 
     switch (randomRoll) {
-      case 0: getSymbol = "🍒"; break;
-      case 1: getSymbol = "🍋"; break;
-      case 2: getSymbol = "💲"; break;
+      case 0: getSymbol = "🍎"; break;
+      case 1: getSymbol = "🍌"; break;
+      case 2: getSymbol = "🍊"; break;
     }
   }
   return getSymbol;
@@ -27,22 +27,34 @@ function randomEmoji() {
 
 $(document).ready(function() {
   
-  $("#betButtonOne").click(function(){ /*sets up three separate calls to get a random emoji then puts in the appropriate window*/
+  $("#betButtonOne").click(function(){ /* -----------------------Button One functionality------------------------ */
+    
+    $("#infoBoxOne span").text("---");  /*resets the Info Window*/
+    $("#infoBoxOne").css("color", "whitesmoke");
+    $("#infoWindowOne").css("background-color", "black");
+  
     var box1 = randomEmoji();
     var box2 = randomEmoji();
     var box3 = randomEmoji();
-    $('#emojiBoxOne span').text(box1);
-    $('#emojiBoxTwo span').text(box2);
-    $('#emojiBoxThree span').text(box3);
-    alert("spinning...");
-    if (box1 == "🍒" && box2 == "🍒" && box3 == "🍒") {
-      alert("Cherry win");
+    $("#emojiBoxOne span").text(box1);
+    $("#emojiBoxTwo span").text(box2);
+    $("#emojiBoxThree span").text(box3);
+ 
+    if (box1 == "🍎" && box2 == "🍎" && box3 == "🍎") {
+      $("#infoBoxOne span").text("🍎 🍎 Win! 🍎 🍎");
+      $("#infoBoxOne").css("color", "#f03a17");
     }
-    if (box1 == "🍋" && box2 == "🍋" && box3 == "🍋") {
-      alert("Lemon win");
+    if (box1 == "🍌" && box2 == "🍌" && box3 == "🍌") {
+      $("#infoBoxOne span").text("🍌 🍌 Win! 🍌 🍌");
+      $("#infoBoxOne").css("color", "#ffb900");
     }
-    if (box1 == "💲" && box2 == "💲" && box3 == "💲") {
-      alert("Jackpot win");
+    if (box1 == "🍊" && box2 == "🍊" && box3 == "🍊") {
+      $("#infoBoxOne span").text("🍊 🍊 Win! 🍊 🍊");
+      $("#infoBoxOne").css("color", "#f7630c");
+    }
+    if (box1 == "🍎" && box2 == "🍌" && box3 == "🍊") {
+      $("#infoBoxOne span").text("Alphabetical Fruit Salad Win!");
+      $("#infoBoxOne").css("color", "purple");
     }  
   });
   
