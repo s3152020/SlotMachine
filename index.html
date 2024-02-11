@@ -42,8 +42,8 @@ body {
   /*The three slot machine slot windows*/
   .slotWindow {
     background: White;
-    width: 100px;
-    height: 110px;
+    width: 200px;
+    height: 220px;
     overflow: hidden;
     /*rounded edges*/
     border-radius: 5px;
@@ -54,19 +54,12 @@ body {
     justify-content:center;
   }
   
-  .boxes {
-    transition: transform 1s ease-in-out;
+  .showIcon {
+    font-size: 100px;
   }
-  
-  .box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-  }
-  
+
   .buttonArea {
-    margin: 1rem 0 1rem 0;
+    margin: 0.5rem 0 0 0;
   }
   
   button {
@@ -74,20 +67,25 @@ body {
     font-size: 1.2rem;
     margin: 0 0.2rem;
     border: none;
+    /*rounded edges*/
     border-radius: 5px;
-    padding: 10px 15px;
+    /*padding: 10px 15px;*/
+    width: 200px;
+    height: 120px;
+    font-size: 48px;
   }
   
-  .info {
+  .statusBar {
     position: fixed;
     bottom: 0;
+    height: 10px;
     width: 100%;
     text-align: center;
   }
 
   #wallet {
     color: gold;
-    font-size: 20px;
+    font-size: 48px;
   }
 
   div.flex-infoArea {
@@ -160,11 +158,13 @@ body {
         <!---<button id="buttonTwo" onclick="Spin('5')">Bet $5 </button>
         <button id="buttonThree" onclick="Spin('25')">Bet $25</button> -->
       </div>
-      
+     
+
       <div class="statusBarArea">                                    
-        <p id="statusBar"></p>
+        <p id="statusBar">---</p>
       </div>              
     </div>
+
 
       <div class="walletArea">                                    
       <p id="wallet">Your Money:</p>
