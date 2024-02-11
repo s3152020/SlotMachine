@@ -4,7 +4,7 @@
 <!-- Start of the CSS Style Sheet-->
 <style>
 body {
-    background: MidnightBlue;
+    background: black;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -23,18 +23,18 @@ body {
   }
   
   
-  /*Blue background section*/
+  /*background section*/
   #app {
     width: 100%;
     height: 100%;
-    background: MidnightBlue;
+    background: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  
-  #slotWindowFrame {
+
+ #slotWindowFrame {
     background: Grey;
     display: flex;
   }
@@ -90,6 +90,22 @@ body {
     font-size: 20px;
   }
 
+  div.flex-infoArea {
+    display: flex;
+    flex-wrap: wrap;
+    /*border: 2px dashed Grey;*/
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  div.flex-infoArea > div {
+    height: 200px;
+    padding: 10px 40px;
+    border: 2px solid White;
+    align-items: center;
+
+  }
+
 </style>
 <!--End of the CSS Style Sheet-->
    
@@ -114,7 +130,6 @@ body {
     
     <h2 id="mainh2"> Three Reel Slot Machine<h2> 
     <!-- <p2 style='font-size:70px;'>&#10067</p2>  -->
-    
     
     <div id="app">
       <div id="slotWindowFrame">
@@ -141,29 +156,55 @@ body {
       </div>
     
       <div class="buttonArea">
-        <button id="spinButton" onclick="Spin()">Play</button>
-        <button id="resetButton"onclick="Reset()">Reset</button>
+        <button id="buttonOne" onclick="Spin('1')">Bet $1 </button>
+        <!---<button id="buttonTwo" onclick="Spin('5')">Bet $5 </button>
+        <button id="buttonThree" onclick="Spin('25')">Bet $25</button> -->
       </div>
       
       <div class="statusBarArea">                                    
-        <p id="demo"></p>
+        <p id="statusBar"></p>
       </div>              
     </div>
 
-    <div class="walletArea">                                    
+      <div class="walletArea">                                    
       <p id="wallet">Your Money:</p>
-    </div>              
+      </div>              
+
+      <div class="flex-infoArea">
+        <div>Payout Chart
+          <ul style="list-style-type:none;">
+            <li>$3: 🍋 🍋 🍋</li>
+            <li>$5: 🍒 🍒 🍒</li>
+            <li>$15: 💰 💰  💰</li>
+          </ul>
+        </div>  
+        <div>Wins and Losses
+          <ul id="wlTracker" style="list-style-type:none;">
+            <li id="lemonTracker">🍋: 0</li>
+            <li id="cherryTracker">🍒: 0</li>
+            <li id="jackpotTracker">💰: 0</li>
+            <li id="lossTracker">👎: 0</li>
+          </ul>
+        </div>
+      </div>
   </div>
 
 <!--Start of the scripting-->
 
 <script>
 
-//start the player with $10
-var playerMoney = 10;  
+//start the player with $25
+var playerMoney = 25;  
+
+//values for trackings wins and losses
+var lemonWins=0;
+var cherryWins=0;
+var jackpotWins=0;
+var losses=0;
 
 //go to the app section of the CSS
 const element = document.getElementById("app");
+const statusBarModifier = document.getElementById("statusBar");
 
 //const displayMoney = document.getElementById("wallet");
 document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
@@ -173,50 +214,77 @@ element.getElementsByClassName("showIcon")[0].textContent ="❓";
 element.getElementsByClassName("showIcon")[1].textContent ="❓";
 element.getElementsByClassName("showIcon")[2].textContent ="❓";
 
-function Spin() {
+function Spin(betAmount) {
 
-  playerMoney = playerMoney-1;
-  document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+
 
   var soundCoinWin = document.getElementById("soundCoinWin");
   var soundJackpotWin = document.getElementById("soundJackpotWin");
 
-  document.getElementById("demo").innerHTML = "---";
+  app.style.backgroundColor="black";
+  document.getElementById("statusBar").innerHTML = "---";
 
   var getSymbol = "null";
   var slots = [];
 
+  if (playerMoney < betAmount) { //if the player clicked the bet button without enough money
+    alert ("You do not have enough money, you cannot bet"); //throw error
+    slots[0] = "❌";
+    slots[1] = "❌";
+    slots[2] = "❌";
+  }  //end the player is broke check
+
+  if (playerMoney >= betAmount) { //if the player still has money
+  playerMoney = playerMoney-betAmount; //take the money
+  document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney; //update the screen with how much money
   for (i=0; i<3; i++) { 
     randomRoll = Math.floor(Math.random()*3);
-    //console.log(randomRoll);
+  
     switch (randomRoll) {
       case 0: getSymbol = "🍒"; break;
       case 1: getSymbol = "🍋"; break;
       case 2: getSymbol = "💰"; break;
     }
     slots[i] = getSymbol;
-  }
+  }  
+  } //end the positive money check
+
+  //document.getElementById("cherryTracker").innerHTML = "Changed";
 
   if (slots[0] == "🍒" && slots[1] == "🍒" && slots[2] == "🍒") {
-    document.getElementById("demo").innerHTML = "Cherry Win!";
+    app.style.backgroundColor="red";
+    document.getElementById("statusBar").innerHTML = "Cherry Win!";
     soundCoinWin.play();
-    playerMoney = playerMoney+3;
+    playerMoney = playerMoney+5;
     document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+    cherryWins=cherryWins+1;
+    document.getElementById("cherryTracker").innerHTML = "🍒: " + cherryWins;
+
   }
 
   if (slots[0] == "🍋" && slots[1] == "🍋" && slots[2] == "🍋") {
-    document.getElementById("demo").innerHTML = "Lemon Win!";
+    app.style.backgroundColor="#FFCC4D";
+    document.getElementById("statusBar").innerHTML = "Lemon Win!";
     soundCoinWin.play();
-    playerMoney = playerMoney+2;
+    playerMoney = playerMoney+3;
     document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+    lemonWins=lemonWins+1;
+    document.getElementById("lemonTracker").innerHTML = "🍋: " + lemonWins;
   }
 
   if (slots[0] == "💰" && slots[1] == "💰" && slots[2] == "💰") {
-    document.getElementById("demo").innerHTML = "JACKPOT Win!";
+    app.style.backgroundColor="green";
+    document.getElementById("statusBar").innerHTML = "Jackpot Win!";
     soundJackpotWin.play();
-    playerMoney = playerMoney+5;
+    playerMoney = playerMoney+15;
     document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
+    jackpotWins=jackpotWins+1;
+    document.getElementById("jackpotTracker").innerHTML = "💰: " + jackpotWins;
   }
+
+  losses=losses+1;
+  document.getElementById("lossTracker").innerHTML = "👎: " + losses;
+
 
   //for troubleshooting if you want to just load cherry symbols
   /*
@@ -230,23 +298,16 @@ function Spin() {
   element.getElementsByClassName("showIcon")[1].textContent =slots[1];
   element.getElementsByClassName("showIcon")[2].textContent =slots[2];
 
-  if (playerMoney == 0) {
-    document.getElementById("spinButton").disabled = true;
+  if (playerMoney <= 0) {
+    document.getElementById("buttonOne").disabled = true;
+    document.getElementById("buttonTwo").disabled = true;
+    document.getElementById("buttonThree").disabled = true;
     soundBrassLose.play();
   }
   
 
 }
 
-function Reset() {
-  var testingText = "Starting Over...";
-  document.getElementById("demo").innerHTML = "You Reset";
-  document.getElementById("demo").innerHTML = testingText;
-  element.getElementsByClassName("showIcon")[0].textContent ="❓";
-  element.getElementsByClassName("showIcon")[1].textContent ="❓";
-  element.getElementsByClassName("showIcon")[2].textContent ="❓";
-  playerMoney = 10;
-}
 </script>
 <!--Start of the scripting-->
 
