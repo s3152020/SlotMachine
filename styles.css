@@ -1,0 +1,51 @@
+/*Top level style sheet rules*/
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+h2, p, button {
+    text-align: center;
+}
+
+div#slotReelWindowFrame1-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px dashed royalblue;
+    margin: 10px;
+    padding: 1px;
+}
+
+div.slotReelWindow {
+    padding: 10px;
+    margin: 10px;
+    background: lightsteelblue;
+    border: 2px solid royalblue;
+    font: 1.25em sans-serif;
+    
+}
+
+div#slotReelWindowFour {
+    padding: 10px;
+    margin: 10px;
+    background: lightcoral;
+    border: 2px solid red;
+    font: 1.25em sans-serif;
+}
+
+div#slotReelWindowFive {
+    padding: 10px;
+    margin: 10px;
+    background: lightgreen;
+    border: 2px solid green;
+    font: 1.25em sans-serif;
+}
+
+div#slotReelWindowSix {
+    padding: 10px;
+    margin: 10px;
+    background: lightslategray;
+    border: 2px solid grey;
+    font: 1.25em sans-serif;
+}
