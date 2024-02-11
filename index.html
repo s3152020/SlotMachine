@@ -1,316 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html>
+    <head>
+        <meta charset="utf-8">
 
-<!-- Start of the CSS Style Sheet-->
-<style>
-body {
-    background: black;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h2 {
-    color: White;
-    text-align: center;
-  }
-  
-  p {
-    color: White;
-    font-size: 50px;
-    text-align:center;
-  }
-  
-  
-  /*background section*/
-  #app {
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+        <title>Blank template</title>
 
- #slotWindowFrame {
-    background: Grey;
-    display: flex;
-  }
-  
-  /*The three slot machine slot windows*/
-  .slotWindow {
-    background: White;
-    width: 200px;
-    height: 220px;
-    overflow: hidden;
-    /*rounded edges*/
-    border-radius: 5px;
-    /*space between*/
-    margin: 5px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
-  
-  .showIcon {
-    font-size: 100px;
-  }
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="styles.css">
 
-  .buttonArea {
-    margin: 0.5rem 0 0 0;
-  }
-  
-  button {
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin: 0 0.2rem;
-    border: none;
-    /*rounded edges*/
-    border-radius: 5px;
-    /*padding: 10px 15px;*/
-    width: 200px;
-    height: 120px;
-    font-size: 48px;
-  }
-  
-  .statusBar {
-    position: fixed;
-    bottom: 0;
-    height: 10px;
-    width: 100%;
-    text-align: center;
-  }
+    </head>
 
-  #wallet {
-    color: gold;
-    font-size: 48px;
-  }
+    <body>
 
-  div.flex-infoArea {
-    display: flex;
-    flex-wrap: wrap;
-    /*border: 2px dashed Grey;*/
-    justify-content: space-evenly;
-    align-items: center;
-  }
+        <h2 id="mainh2"> Template on how a jQuery replace works</h2> 
+        <p> This is the text that will get hidden, replaced, etc as "p" </p>
 
-  div.flex-infoArea > div {
-    height: 200px;
-    padding: 10px 40px;
-    border: 2px solid White;
-    align-items: center;
-
-  }
-
-</style>
-<!--End of the CSS Style Sheet-->
-   
-<body>
-
-  <!--Initializing things here-->
-  <audio id="soundCoinWin">
-    <source src="coin-short.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <audio id="soundJackpotWin">
-    <source src="jackpot.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <audio id="soundBrassLose">
-    <source src="brass-lose.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-    
-    <h2 id="mainh2"> Three Reel Slot Machine<h2> 
-    <!-- <p2 style='font-size:70px;'>&#10067</p2>  -->
-    
-    <div id="app">
-      <div id="slotWindowFrame">
-        <div class="slotWindow">
-          <div class="boxes">
-            <p class="showIcon">Placeholder for Icon</p1>
-            <!-- <div class="box">?</div> -->
-          </div>
+        <div id="slotReelWindowFrame1-container">
+            <div class="slotReelWindow">Window One
+            </div>
+            <div class="slotReelWindow">Window Two
+            </div>
+            <div class="slotReelWindow">Window Three
+            </div>
+            <div id="slotReelWindowFour">
+                <span>Window Four</span>
+            </div>
+            <div id="slotReelWindowFive">
+                <span>Window Five</span>
+            </div>
+            <div id="slotReelWindowSix">Window Six
+            </div>
         </div>
-    
-        <div class="slotWindow">
-          <div class="boxes">
-            <p class="showIcon">Placeholder for Icon</p1>
-            <!-- <div class="box">?</div> -->
-          </div>
-        </div>
-    
-        <div class="slotWindow">
-          <div class="boxes">
-            <p class="showIcon">Placeholder for Icon</p1>
-            <!-- <div class="box">?</div> -->
-          </div>
-        </div>
-      </div>
-    
-      <div class="buttonArea">
-        <button id="buttonOne" onclick="Spin('1')">Bet $1 </button>
-        <!---<button id="buttonTwo" onclick="Spin('5')">Bet $5 </button>
-        <button id="buttonThree" onclick="Spin('25')">Bet $25</button> -->
-      </div>
-     
 
-      <div class="statusBarArea">                                    
-        <p id="statusBar">---</p>
-      </div>              
-    </div>
+        <button id="alertButton">Alert</button>
+        <button id="hideButton">Hide p</button>
+        <button id="showButton">Show p</button>
+        <button id="fadeButton">Fade Toggle p</button>
+        <button id="replacePTextButton">Replace Paragraph Text</button>
+        <button id="replaceWindowFourTextButton">Replace Window Four Text</button>
+        <button id="replaceWindowFiveTextButton">Replace Window Five Text with Emoji</button>
+             
+        <!-- Load external JavaScript.  The basic javascript library MUST be last -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="scripts.js"></script>
+        
+    </body>
 
-
-      <div class="walletArea">                                    
-      <p id="wallet">Your Money:</p>
-      </div>              
-
-      <div class="flex-infoArea">
-        <div>Payout Chart
-          <ul style="list-style-type:none;">
-            <li>$3: 🍋 🍋 🍋</li>
-            <li>$5: 🍒 🍒 🍒</li>
-            <li>$15: 💰 💰  💰</li>
-          </ul>
-        </div>  
-        <div>Wins and Losses
-          <ul id="wlTracker" style="list-style-type:none;">
-            <li id="lemonTracker">🍋: 0</li>
-            <li id="cherryTracker">🍒: 0</li>
-            <li id="jackpotTracker">💰: 0</li>
-            <li id="lossTracker">👎: 0</li>
-          </ul>
-        </div>
-      </div>
-  </div>
-
-<!--Start of the scripting-->
-
-<script>
-
-//start the player with $25
-var playerMoney = 25;  
-
-//values for trackings wins and losses
-var lemonWins=0;
-var cherryWins=0;
-var jackpotWins=0;
-var losses=0;
-
-//go to the app section of the CSS
-const element = document.getElementById("app");
-const statusBarModifier = document.getElementById("statusBar");
-
-//const displayMoney = document.getElementById("wallet");
-document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
-
-//load the question marks
-element.getElementsByClassName("showIcon")[0].textContent ="❓";
-element.getElementsByClassName("showIcon")[1].textContent ="❓";
-element.getElementsByClassName("showIcon")[2].textContent ="❓";
-
-function Spin(betAmount) {
-
-
-
-  var soundCoinWin = document.getElementById("soundCoinWin");
-  var soundJackpotWin = document.getElementById("soundJackpotWin");
-
-  app.style.backgroundColor="black";
-  document.getElementById("statusBar").innerHTML = "---";
-
-  var getSymbol = "null";
-  var slots = [];
-
-  if (playerMoney < betAmount) { //if the player clicked the bet button without enough money
-    alert ("You do not have enough money, you cannot bet"); //throw error
-    slots[0] = "❌";
-    slots[1] = "❌";
-    slots[2] = "❌";
-  }  //end the player is broke check
-
-  if (playerMoney >= betAmount) { //if the player still has money
-  playerMoney = playerMoney-betAmount; //take the money
-  document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney; //update the screen with how much money
-  for (i=0; i<3; i++) { 
-    randomRoll = Math.floor(Math.random()*3);
-  
-    switch (randomRoll) {
-      case 0: getSymbol = "🍒"; break;
-      case 1: getSymbol = "🍋"; break;
-      case 2: getSymbol = "💰"; break;
-    }
-    slots[i] = getSymbol;
-  }  
-  } //end the positive money check
-
-  //document.getElementById("cherryTracker").innerHTML = "Changed";
-
-  if (slots[0] == "🍒" && slots[1] == "🍒" && slots[2] == "🍒") {
-    app.style.backgroundColor="red";
-    document.getElementById("statusBar").innerHTML = "Cherry Win!";
-    soundCoinWin.play();
-    playerMoney = playerMoney+5;
-    document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
-    cherryWins=cherryWins+1;
-    document.getElementById("cherryTracker").innerHTML = "🍒: " + cherryWins;
-
-  }
-
-  if (slots[0] == "🍋" && slots[1] == "🍋" && slots[2] == "🍋") {
-    app.style.backgroundColor="#FFCC4D";
-    document.getElementById("statusBar").innerHTML = "Lemon Win!";
-    soundCoinWin.play();
-    playerMoney = playerMoney+3;
-    document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
-    lemonWins=lemonWins+1;
-    document.getElementById("lemonTracker").innerHTML = "🍋: " + lemonWins;
-  }
-
-  if (slots[0] == "💰" && slots[1] == "💰" && slots[2] == "💰") {
-    app.style.backgroundColor="green";
-    document.getElementById("statusBar").innerHTML = "Jackpot Win!";
-    soundJackpotWin.play();
-    playerMoney = playerMoney+15;
-    document.getElementById("wallet").innerHTML = "Your Money: " + playerMoney;
-    jackpotWins=jackpotWins+1;
-    document.getElementById("jackpotTracker").innerHTML = "💰: " + jackpotWins;
-  }
-
-  losses=losses+1;
-  document.getElementById("lossTracker").innerHTML = "👎: " + losses;
-
-
-  //for troubleshooting if you want to just load cherry symbols
-  /*
-  element.getElementsByClassName("showIcon")[0].textContent ="🍒";
-  element.getElementsByClassName("showIcon")[1].textContent ="🍒";
-  element.getElementsByClassName("showIcon")[2].textContent ="🍒";
-  */
-
-  //display the icons in the slot windows
-  element.getElementsByClassName("showIcon")[0].textContent =slots[0];
-  element.getElementsByClassName("showIcon")[1].textContent =slots[1];
-  element.getElementsByClassName("showIcon")[2].textContent =slots[2];
-
-  if (playerMoney <= 0) {
-    document.getElementById("buttonOne").disabled = true;
-    document.getElementById("buttonTwo").disabled = true;
-    document.getElementById("buttonThree").disabled = true;
-    soundBrassLose.play();
-  }
-  
-
-}
-
-</script>
-<!--Start of the scripting-->
-
-
-</body>
 </html>
