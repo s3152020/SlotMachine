@@ -13,7 +13,7 @@
 
     <body>
 
-        <h2> Simple Three Reel Slot Machine</h2> 
+        <h2> 100 Spins to Win</h2> 
        
     <div id="entireSlotMachine-container">
         <div id="reelWindow-container">
@@ -28,13 +28,39 @@
             </div>
         </div>
 
-        <div class="betButtonsRow">
+        <div class="spinRow-container">
             <button id="betButtonOne"><span>Spin</span></button>
-            <button id="betButtonTwo"><span>Null</span></button>
+            <div id="spinCounter"><span>---</span></div>
         </div>
+        
         <div id="infoWindow-container">
             <div id="infoWindowOne"> <span></span>
                 <div id="infoBoxOne"><span>---</span></div>
+            </div>    
+        </div>
+        
+        <div id="winWindow-container">
+            <div id="payoutsWindow">
+                <div id="payoutsBox">
+                    <ul style="list-style-type:none;">
+                        <li>5: 🍎🍎🍎</li>
+                        <li>5: 🍌🍌🍌</li>
+                        <li>5: 🍊🍊🍊</li>
+                        <li>10:🍎🍌🍊</li>
+                        <li>25: 💲💲💲</li>
+                    </ul>
+                </div>
+            </div>    
+            <div id="trackerWindow"> <span></span>
+                <div id="trackerBox"><span></span>
+                    <ul style="list-style-type:none;">
+                        <li id="appleTracker">🍎🍎🍎: 0 </li>
+                        <li id="bananaTracker">🍌🍌🍌: 0</li>
+                        <li id="orangeTracker">🍊🍊🍊: 0</li>
+                        <li id="saladTracker">🍎🍌🍊: 0</li>
+                        <li id="jackpotTracker">💲 💲 💲: 0</li>
+                    </ul>
+                </div>
             </div>    
         </div>        
 

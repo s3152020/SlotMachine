@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+ul {
+    columns: 2;
+}
+
 h2 {
     text-align: center;
     color:whitesmoke;
@@ -35,8 +39,8 @@ div#reelWindow-container {
 }
 
 div#slotReelWindowOne {
-    height: 110px;
-    width: 100px;
+    height: 220px;
+    width: 200px;
     margin: .6rem;
     padding: 1rem;
     background: whitesmoke;
@@ -46,12 +50,12 @@ div#slotReelWindowOne {
 div#emojiBoxOne {
     display: flex;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 8rem;
 }
 
 div#slotReelWindowTwo {
-    height: 110px;
-    width: 100px;
+    height: 220px;
+    width: 200px;
     margin: .6rem;
     padding: 1rem;
     background: whitesmoke;
@@ -61,12 +65,12 @@ div#slotReelWindowTwo {
 div#emojiBoxTwo {
     display: flex;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 8rem;
 }
 
 div#slotReelWindowThree {
-    height: 110px;
-    width: 100px;
+    height: 220px;
+    width: 200px;
     margin: .6rem;
     padding: 1rem;
     background: whitesmoke;
@@ -76,21 +80,31 @@ div#slotReelWindowThree {
 div#emojiBoxThree {
     display: flex;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 8rem;
 }
 
-div.betButtonsRow {
-    margin: 1rem;
+div.spinRow-container {
+    background-color: grey;
+    display: flex;
+    flex-direction: row;
     border: 2px dashed black;
+    justify-content: center; /*centers the sub-windows horizontally*/
 }
 
 button {
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 4rem;
     margin: .6rem;
     border: none;
     border-radius: 1rem;
     padding: .5rem 1rem;
+}
+
+div#spinCounter {
+    margin: 1rem;
+    font-size: 4rem;
+    /*border: 2px dashed black;*/
+    background-color: grey;
 }
 
 div#infoWindow-container {
@@ -116,5 +130,47 @@ div#infoBoxOne {
     justify-content: center;
     font-size:8rem;
     color: black;
+}
+
+div#winWindow-container {
+    background-color: grey;
+    display: flex;
+    flex-direction: row;
+    border: 2px dashed black;
+    justify-content: center; /*centers the sub-windows horizontally*/
+}
+
+div#payoutsWindow {
+    height: 200px;
+    width: 600px;
+    margin: .6rem;
+    padding: 1rem;
+    background: whitesmoke;
+    background-color: black;
+    border: 2px solid black;
+}
+
+div#payoutsBox {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: whitesmoke;
+}
+
+div#trackerWindow {
+    height: 200px;
+    width: 600px;
+    margin: .6rem;
+    padding: 1rem;
+    background: whitesmoke;
+    background-color: black;
+    border: 2px solid black;
+}
+
+div#trackerBox {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: whitesmoke;
 }
 
