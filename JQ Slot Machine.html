@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Blank template</title>
 
@@ -16,21 +16,95 @@
         <h2> 100 Spins to Win</h2> 
        
     <div id="entireSlotMachine-container">
-        <div id="reelWindow-container">
-            <div id="slotReelWindowOne"> <span></span>
-                <div id="emojiBoxOne"> <span>❓</span></div>
+        <div id="payoutsWindow">
+            <div id="payoutsBox">
+                <table>
+                    <tr>
+                        <th>Win Condition</th>
+                        <th>Payout</th>
+                        <th>Number to Win</th>
+                        <th>Wins</th>
+                    </tr>
+                    <tr>
+                        <td>🍎🍎🍎</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td id="cherryWinRow">0</td>
+                    </tr>
+                    <tr>
+                        <td>🍌🍌🍌</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td id="bananaWinRow">0</td>
+                    </tr>
+                    <tr>
+                        <td>🍊🍊🍊</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td id="orangeWinRow">0</td>
+                    </tr>
+                    <tr>
+                        <td>🍎🍌🍊</td>
+                        <td>10</td>
+                        <td>1</td>
+                        <td id="fruitSaladWinRow">0</td>
+                    </tr>
+                    <tr>
+                        <td>💲💲💲</td>
+                        <td>25</td>
+                        <td>1</td>
+                        <td id="jackpotWinRow">0</td>
+                    </tr>  
+                    <tr>
+                        <td>💲💲💲</td>
+                        <td>25</td>
+                        <td>1</td>
+                        <td id="jackpotWinRow">0</td>
+                    </tr>
+                    <tr>
+                        <td>💲💲💲</td>
+                        <td>25</td>
+                        <td>1</td>
+                        <td id="jackpotWinRow">0</td>
+                    </tr>
+                    <tr>
+                        <td>💲💲💲</td>
+                        <td>25</td>
+                        <td>1</td>
+                        <td id="jackpotWinRow">0</td>
+                    </tr>
+                </table>
             </div>
-            <div id="slotReelWindowTwo"> <span></span>
-                <div id="emojiBoxTwo"> <span>❓</span></div>
-            </div>
-            <div id="slotReelWindowThree"><span></span> 
-                <div id="emojiBoxThree"> <span>❓</span></div>
-            </div>
+        </div>    
+        <div id="slotReelWindowOne"> <span></span>
+            <div id="emojiBoxOne"> <span>❓</span></div>
         </div>
+        <div id="slotReelWindowTwo"> <span></span>
+            <div id="emojiBoxTwo"> <span>❓</span></div>
+        </div>
+        <div id="slotReelWindowThree"><span></span> 
+            <div id="emojiBoxThree"> <span>❓</span></div>
+        </div>
+        <div id="trackerWindow"> <span></span>
+            <div id="trackerBox"><span></span>
+                <ul style="list-style-type:none;">
+                    <li id="appleTracker">🍎🍎🍎: 0</li>
+                    <li id="bananaTracker">🍌🍌🍌: 0</li>
+                    <li id="orangeTracker">🍊🍊🍊: 0</li>
+                    <li id="saladTracker">🍎🍌🍊: 0</li>
+                    <li id="jackpotTracker">💲 💲 💲: 0</li>
+
+                </ul>
+            </div>
+        </div> 
+        
 
         <div class="spinRow-container">
-            <button id="betButtonOne"><span>Spin</span></button>
-            <div id="spinCounter"><span>---</span></div>
+            <div id="buttonWindow">
+                <button id="spinButtonOne"><span>Spin</span></button>
+                <button id="stopButtonOne"><span>Stop</span></button>
+                <div id="spinCounter"><span>---</span></div>
+            </div>    
         </div>
         
         <div id="infoWindow-container">
@@ -38,32 +112,6 @@
                 <div id="infoBoxOne"><span>---</span></div>
             </div>    
         </div>
-        
-        <div id="winWindow-container">
-            <div id="payoutsWindow">
-                <div id="payoutsBox">
-                    <ul style="list-style-type:none;">
-                        <li>5: 🍎🍎🍎</li>
-                        <li>5: 🍌🍌🍌</li>
-                        <li>5: 🍊🍊🍊</li>
-                        <li>10:🍎🍌🍊</li>
-                        <li>25: 💲💲💲</li>
-                    </ul>
-                </div>
-            </div>    
-            <div id="trackerWindow"> <span></span>
-                <div id="trackerBox"><span></span>
-                    <ul style="list-style-type:none;">
-                        <li id="appleTracker">🍎🍎🍎: 0 </li>
-                        <li id="bananaTracker">🍌🍌🍌: 0</li>
-                        <li id="orangeTracker">🍊🍊🍊: 0</li>
-                        <li id="saladTracker">🍎🍌🍊: 0</li>
-                        <li id="jackpotTracker">💲 💲 💲: 0</li>
-                    </ul>
-                </div>
-            </div>    
-        </div>        
-
     </div>
 
         <!-- Load external JavaScript.  The basic javascript library MUST be last -->

@@ -3,6 +3,8 @@
     margin: 0rem;
     padding: 0rem;
     box-sizing: border-box;
+
+
 }
 
 ul {
@@ -16,35 +18,55 @@ h2 {
 
 body {
     /*sets the background color and default font color for the entire screem*/
-    background-color: darkgrey;
+    background-color: grey;
+    margin: 0;
 
 }
 
 #entireSlotMachine-container {
-    width: 100%;
-    height: 100%;
-    background: Grey;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 
-div#reelWindow-container {
-    background-color: grey;
-    display: flex;
-    flex-direction: row;
-    border: 2px dashed black;
-    justify-content: center; /*centers the sub-windows horizontally*/
+    background: grey;
+    display: grid;
+    grid-template-columns: 30% 15% 15% 15% 25%;
+
 }
 
-div#slotReelWindowOne {
-    height: 220px;
-    width: 200px;
+div#payoutsWindow {
     margin: .6rem;
     padding: 1rem;
     background: whitesmoke;
+    background-color: black;
     border: 2px solid black;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 3;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+th, td {
+    padding: 4px;
+    text-align: left;
+    border-bottom: 1px solid #DDD;
+}
+
+div#payoutsBox {
+    justify-content: left;
+    font-size: 1rem;
+    color: whitesmoke;
+}
+
+#slotReelWindowOne {
+    height: 220px;
+    margin: .6rem;
+    padding: 1rem;
+    background: red;
+    border: 2px solid black;
+    grid-column: 2 / span 1;
+    grid-row: 1;
 }
 
 div#emojiBoxOne {
@@ -55,11 +77,12 @@ div#emojiBoxOne {
 
 div#slotReelWindowTwo {
     height: 220px;
-    width: 200px;
     margin: .6rem;
     padding: 1rem;
-    background: whitesmoke;
+    background: blue;
     border: 2px solid black;
+    grid-column: 3 / span 1;
+    grid-row: 1;
 }
 
 div#emojiBoxTwo {
@@ -70,11 +93,12 @@ div#emojiBoxTwo {
 
 div#slotReelWindowThree {
     height: 220px;
-    width: 200px;
     margin: .6rem;
     padding: 1rem;
-    background: whitesmoke;
+    background: green;
     border: 2px solid black;
+    grid-column: 4 / span 1;
+    grid-row: 1;
 }
 
 div#emojiBoxThree {
@@ -83,12 +107,37 @@ div#emojiBoxThree {
     font-size: 8rem;
 }
 
+div#trackerWindow {
+    margin: .6rem;
+    padding: 1rem;
+    background: whitesmoke;
+    background-color: black;
+    border: 2px solid black;
+    grid-column: 5 / span 1;
+    grid-row: 1 / span 3;
+}
+
+div#trackerBox {
+    display: grid;
+    justify-content: center;
+    font-size: 2rem;
+    color: whitesmoke;
+}
+
 div.spinRow-container {
     background-color: grey;
-    display: flex;
-    flex-direction: row;
+    display: grid;
     border: 2px dashed black;
-    justify-content: center; /*centers the sub-windows horizontally*/
+    justify-content: center; 
+    grid-column: 2 / span 3;
+    grid-row: 2 / span 1;
+}
+
+div#buttonWindow {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: whitesmoke; 
 }
 
 button {
@@ -109,68 +158,43 @@ div#spinCounter {
 
 div#infoWindow-container {
     background-color: grey;
-    display: flex;
-    flex-direction: row;
+    display: grid;
     border: 2px dashed black;
+    background-color: black;
     justify-content: center; /*centers the sub-windows horizontally*/
+    grid-column: 2 / span 3;
+    grid-row: 3 / span 1;
 }
 
 div#infoWindowOne {
-    height: 200px;
-    width: 1200px;
     margin: .6rem;
-    padding: 1rem;
+    padding: 0.8rem;
     background: whitesmoke;
     background-color: black;
     border: 2px solid black;
 }
 
 div#infoBoxOne {
-    display: flex;
-    justify-content: center;
-    font-size:8rem;
+    font-size:6rem;
     color: black;
 }
 
-div#winWindow-container {
-    background-color: grey;
-    display: flex;
-    flex-direction: row;
-    border: 2px dashed black;
-    justify-content: center; /*centers the sub-windows horizontally*/
+
+
+
+
+@keyframes rotating {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }
 
-div#payoutsWindow {
-    height: 200px;
-    width: 600px;
-    margin: .6rem;
-    padding: 1rem;
-    background: whitesmoke;
-    background-color: black;
-    border: 2px solid black;
+.rotating {
+    animation: rotating 0.5s linear infinite;
 }
 
-div#payoutsBox {
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    color: whitesmoke;
-}
 
-div#trackerWindow {
-    height: 200px;
-    width: 600px;
-    margin: .6rem;
-    padding: 1rem;
-    background: whitesmoke;
-    background-color: black;
-    border: 2px solid black;
-}
-
-div#trackerBox {
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    color: whitesmoke;
-}
 

@@ -34,12 +34,34 @@ function randomEmoji() {
 /*----------------------------------------------<Start> jQuery---------------------------------------*/
 
 $(document).ready(function() {
+  $("#spinButtonOne").click(function(){
+    $("#spinButtonOne").prop('disabled', true);
+    $("#stopButtonOne").prop('disabled', false);
+    $("#emojiBoxOne span").text("❓");
+    $("#emojiBoxTwo span").text("❓");
+    $("#emojiBoxThree span").text("❓");
+    $("#emojiBoxOne").toggleClass("rotating");
+    $("#emojiBoxTwo").toggleClass("rotating");
+    $("#emojiBoxThree").toggleClass("rotating");
+  });
+});
+
+
+$(document).ready(function() {
   
-  $("#betButtonOne").click(function(){ /* -----------------------Button One functionality------------------------ */
-    
+  $("#stopButtonOne").click(function(){ /* -----------------------Button One functionality------------------------ */
+    $("#spinButtonOne").prop('disabled', false);
+    $("#stopButtonOne").prop('disabled', true);
+    $("#emojiBoxOne").toggleClass("rotating");
+    $("#emojiBoxTwo").toggleClass("rotating");
+    $("#emojiBoxThree").toggleClass("rotating");
+    /* ----------------spins the emoji box
+    $("#emojiBoxOne").toggleClass("rotating");  
+    ---------------------------------------------------*/
+
     spinsRemaining=spinsRemaining-1;
     if (spinsRemaining == 0) {
-      $('#betButtonOne').prop('disabled', true);
+      $('#spinButtonOne').prop('disabled', true);
     }
     
     $("#spinCounter span").text(spinsRemaining);
@@ -47,7 +69,7 @@ $(document).ready(function() {
     $("#infoBoxOne span").text("---");  /*resets the Info Window*/
     $("#infoBoxOne").css("color", "whitesmoke");
     $("#infoWindowOne").css("background-color", "black");
-    $("#infoBoxOne").css("font-size", "8rem");
+    $("#infoBoxOne").css("font-size", "6rem");
   
     var box1 = randomEmoji();
     var box2 = randomEmoji();
@@ -62,6 +84,7 @@ $(document).ready(function() {
       spinsRemaining=spinsRemaining+5;
       appleWinTracker=appleWinTracker+1;
       $("#appleTracker").text("🍎🍎🍎: " + appleWinTracker);
+      $("#cherryWinRow").text(appleWinTracker);
     }
     if (box1 == "🍌" && box2 == "🍌" && box3 == "🍌") {
       $("#infoBoxOne span").text("Banana 🍌 Win!");
@@ -69,6 +92,7 @@ $(document).ready(function() {
       spinsRemaining=spinsRemaining+5;
       bananaWinTracker=bananaWinTracker+1;
       $("#bananaTracker").text("🍌🍌🍌: " + bananaWinTracker);
+      $("#bananaWinRow").text(bananaWinTracker);
     }
     if (box1 == "🍊" && box2 == "🍊" && box3 == "🍊") {
       $("#infoBoxOne span").text("Orange 🍊 Win!");
@@ -76,25 +100,27 @@ $(document).ready(function() {
       spinsRemaining=spinsRemaining+5;
       orangeWinTracker=orangeWinTracker+1;
       $("#orangeTracker").text("🍊🍊🍊: " + orangeWinTracker);
+      $("#orangeWinRow").text(orangeWinTracker);
     }
     if (box1 == "💲" && box2 == "💲" && box3 == "💲") {
-      $("#infoBoxOne span").text("Jackpot 💲💲💲 Win!");
+      $("#infoBoxOne span").text("Jackpot 💲 Win!");
       $("#infoBoxOne").css("color", "#34cd2b");
       spinsRemaining=spinsRemaining+25;
       jackpotWinTracker=jackpotWinTracker+1;
       $("#jackpotTracker").text("💲 💲 💲: " + jackpotWinTracker);
+      $("#jackpotWinRow").text(jackpotWinTracker);
     }
     if (box1 == "🍎" && box2 == "🍌" && box3 == "🍊") {
-      $("#infoBoxOne span").text("Fruit Salad 🍎🍌🍊 Win!");
+      $("#infoBoxOne span").text("Fruit Salad🍎🍌🍊 Win!");
       $("#infoBoxOne").css("color", "purple");
-      $("#infoBoxOne").css("font-size", "6rem");
       spinsRemaining=spinsRemaining+10;
       saladWinTracker=saladWinTracker+1;
       $("#saladTracker").text("🍎🍌🍊: " + saladWinTracker);
+      $("#fruitSaladWinRow").text(saladWinTracker);
     }  
   });
   
-  $("#betButtonTwo").click(buttonTwoAlert); /*basic function to return an alert that this button isn't ready yet*/
+  /*$("#betButtonTwo").click(buttonTwoAlert); basic function to return an alert that this button isn't ready yet*/
 
 });
 
